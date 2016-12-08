@@ -20,6 +20,6 @@ then
 	git merge origin/master
 	echo PROJECT UPDATED!
 	git checkout sync
-	echo You're in Sync branch.
+	echo You are in Sync branch.
 fi
 
