@@ -20,4 +20,8 @@ public class Controller {
 
     //--Events--------------------------------------------
 
+    public void buttonClicked() {
+        TrayIcon.getInstance().createSystemTrayIcon();
+    }
+
 }
