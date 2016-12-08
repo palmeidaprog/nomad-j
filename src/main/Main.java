@@ -7,12 +7,12 @@ package main;
 */
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 public class Main extends Application {
@@ -21,7 +21,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        // FXML Load
+        // FXML load
         FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("main.fxml"));
         mainLoader.setController(Controller.getInstance());
         try {
@@ -30,9 +30,12 @@ public class Main extends Application {
             e.printStackTrace();
         }
         mainStage = primaryStage; // saves Stage as public
-        primaryStage.setTitle("Nomad");
-        primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.show();
+        mainStage.setTitle("Nomad");
+        mainStage.setScene(new Scene(root, 300, 275));
+        mainStage.show();
+        Platform.setImplicitExit(false);
+        TrayIcn.getInstance().createSystemTrayIcon();
+        //mainStage.close();
     }
 
     public static void main(String[] args) {

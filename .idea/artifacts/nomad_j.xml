@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="nomad-j">
+    <output-path>$PROJECT_DIR$/out/artifacts/nomad_j</output-path>
+    <root id="root">
+      <element id="archive" name="nomad_j.jar">
+        <element id="module-output" name="nomad-j" />
+        <element id="directory" name="images">
+          <element id="dir-copy" path="$PROJECT_DIR$/resources/images" />
+        </element>
+        <element id="file-copy" path="$PROJECT_DIR$/resources/images/ok128.gif" />
+      </element>
+    </root>
+  </artifact>
+</component>
