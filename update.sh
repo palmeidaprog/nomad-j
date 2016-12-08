@@ -19,6 +19,7 @@ then
 	git checkout master
 	git merge origin/master
 	echo PROJECT UPDATED!
-	
+	git checkout sync
+	echo You're in Sync branch.
 fi
 
