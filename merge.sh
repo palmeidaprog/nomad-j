@@ -10,10 +10,10 @@ then
 	echo MERGING SYNC WITH DEVELOPMENT...
 	git checkout development
 	git merge sync
-	echo MERGING DEVELOPMENT WITH MASTER...
+	echo MERGING DEV WITH MASTER...
 	git checkout master
-	git merge development
+	git merge dev
 	echo ALL BRANCHES MERGED!
-	
+	git checkout sync
 fi
 
