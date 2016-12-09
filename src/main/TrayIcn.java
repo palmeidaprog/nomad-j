@@ -7,6 +7,7 @@ package main;
 */
 
 import javafx.application.Platform;
+import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -84,9 +85,10 @@ public class TrayIcn {
         });
 
         // open program system tray icon menu
+        final Stage stage = Main.mainStage;
         MenuItem openItem = new MenuItem("Abrir Programa");
         openItem.addActionListener(event -> {
-           Main.mainStage.show();
+           stage.show();
         });
 
         // setup the popup menu for the application.
@@ -106,7 +108,7 @@ public class TrayIcn {
                         ImageIO.read(getClass().getResourceAsStream("mac_sync128.gif"));
             }
             else {
-                return i == 1 ? ImageIO.read(getClass().getResourceAsStream("mac_ok128.gif")) :
+                return i == 1 ? ImageIO.read(getClass().getResourceAsStream("windows_ok128.png")) :
                         ImageIO.read(getClass().getResourceAsStream("mac_sync128.gif"));
             }
         } catch(IOException e) {
