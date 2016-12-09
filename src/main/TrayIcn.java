@@ -113,7 +113,7 @@ public class TrayIcn {
             }
             else {
                 return i == 1 ? ImageIO.read(getClass().getResourceAsStream("windows_ok32.png")) :
-                        ImageIO.read(getClass().getResourceAsStream("windows_sync128.gif"));
+                        ImageIO.read(getClass().getResourceAsStream("windows_sync32.gif"));
             }
         } catch(IOException e) {
             e.printStackTrace();
