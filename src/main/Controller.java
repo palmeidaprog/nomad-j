@@ -7,6 +7,7 @@ package main;
 */
 
 public class Controller {
+    private int i = 1;
 
     //--Singleton design----------------------------------
     private volatile static Controller instance = null;
@@ -21,7 +22,9 @@ public class Controller {
     //--Events--------------------------------------------
 
     public void buttonClicked() {
+        if(i == 0) i = 1;
+        else i = 0;
         System.out.println("Clicked"); // @debug
-        TrayIcn.getInstance().createSystemTrayIcon();
+        TrayIcn.getInstance().changeIcon(i);
     }
 }

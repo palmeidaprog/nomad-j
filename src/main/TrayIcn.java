@@ -18,6 +18,7 @@ import static java.awt.Toolkit.getDefaultToolkit;
 public class TrayIcn {
     private String os;
     private TrayIcon trayIcon;
+    private SystemTray sTray = SystemTray.getSystemTray();
 
     //--Singleton design--------------------------------------------------
     private volatile static TrayIcn instance = null;
@@ -54,7 +55,7 @@ public class TrayIcn {
             System.out.println("SystemTray is not supported");
             return;
         }
-        final SystemTray tray = SystemTray.getSystemTray();
+        final SystemTray tray = sTray;
 
         // creating popup menu
         //final PopupMenu popup = new PopupMenu();
@@ -106,13 +107,21 @@ public class TrayIcn {
                 return i == 1 ? ImageIO.read(getClass().getResourceAsStream("mac_ok128.gif")) :
                         ImageIO.read(getClass().getResourceAsStream("mac_sync128.gif"));
             }
-            else {
-                return i == 1 ? ImageIO.read(getClass().getResourceAsStream("windows_ok128.png")) :
+            else if(os.equals("linux")) {
+                return i == 1 ? ImageIO.read(getClass().getResourceAsStream("linux_ok32.png")) :
                         ImageIO.read(getClass().getResourceAsStream("mac_sync128.gif"));
+            }
+            else {
+                return i == 1 ? ImageIO.read(getClass().getResourceAsStream("windows_ok32.png")) :
+                        ImageIO.read(getClass().getResourceAsStream("windows_sync128.gif"));
             }
         } catch(IOException e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void changeIcon(int i) {
+        trayIcon.setImage(getIcon(i));
     }
 }
