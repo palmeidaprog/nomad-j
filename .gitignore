@@ -4,4 +4,6 @@
 # out intellij binary folder
 /out
 /.idea/workspace.xml
+/.idea/gradle.xml
+/.idea/encodings.xml
 
