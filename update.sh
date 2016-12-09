@@ -13,8 +13,8 @@ then
 	git checkout sync
 	git merge origin/sync
 	echo UPDATING DEVELOPMENT...
-	git checkout development
-	git merge origin/development
+	git checkout dev
+	git merge origin/dev
 	echo UPDATING MASTER...
 	git checkout master
 	git merge origin/master

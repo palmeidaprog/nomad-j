@@ -8,8 +8,8 @@ if [[ $resp == "y" || $resp == "Y" ]];
 then
 
 	echo MERGING SYNC WITH DEVELOPMENT...
-	git checkout development
-	git merge sync
+	git checkout dev
+    git merge sync
 	echo MERGING DEV WITH MASTER...
 	git checkout master
 	git merge dev
