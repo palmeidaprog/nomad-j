@@ -1,0 +1,12 @@
+/*
+@author Paulo Roberto Almeida Filho
+@email palmeidaprogramming@gmail.com
+Custom VBox properties
+*/
+
+.background {
+	-fx-background-image: url("../main/back.jpg");
+    /*-fx-background-color: #52596b; /* todo: Remove this */
+}
+
+

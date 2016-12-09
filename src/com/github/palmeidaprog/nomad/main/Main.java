@@ -1,4 +1,4 @@
-package main;
+package com.github.palmeidaprog.nomad.main;
 
 /*
 * Nomad-j
@@ -8,16 +8,19 @@ package main;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.effect.BoxBlur;
 import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
     public static Parent root;
     public static Stage mainStage;
+    private final double OPACITY = 0.85;
+    private final double BLUR_AMOUNT = 60;
+    private BoxBlur blur = new BoxBlur(BLUR_AMOUNT, BLUR_AMOUNT, 3);
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -33,8 +36,10 @@ public class Main extends Application {
         mainStage.setTitle("Nomad");
         mainStage.setScene(new Scene(root, 300, 275));
         mainStage.show();
+        //root.setEffect(blur);
         Platform.setImplicitExit(false);
         TrayIcn.getInstance().createSystemTrayIcon();
+        mainStage.setOpacity(OPACITY);
         //mainStage.close();
     }
 
