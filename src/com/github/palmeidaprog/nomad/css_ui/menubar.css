@@ -1,0 +1,65 @@
+/*
+Paulo Roberto Almeida Filho
+palmeidaprogramming@gmail.com
+Custom menus properties
+*/
+
+/* CONTEXT MENU */
+
+.context-menu {
+    -fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";
+    -fx-background-color: #2f2f2f;
+}
+
+
+/* MENU BAR */
+
+.menu-bar .label {
+    -fx-text-fill: white;
+    -fx-opacity: 0.9;
+}
+
+
+/* MENU */
+
+.menu {
+	-fx-background-color: #2f2f2f;
+}
+
+.menu .label {
+    -fx-text-fill: white;
+    -fx-opacity: 0.9;
+}
+
+.menu:hover {
+    -fx-background-color: darkgray;
+}
+
+
+
+/* MENU ITEM */
+
+.menu-item .left-container { 
+	-fx-background-color: #2f2f2f;
+}
+
+
+
+.menu-item {
+	-fx-background-color: #2f2f2f;
+}
+
+.menu-item:focused .left-container { 
+	-fx-background-color: darkgray;
+}
+
+.menu-item:focused {
+	-fx-background-color: darkgray;	
+}
+
+.menu-item:focused .label {
+	-fx-background-color: darkgray;	
+}
+
+
+
