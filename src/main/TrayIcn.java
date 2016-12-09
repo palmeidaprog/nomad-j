@@ -8,12 +8,10 @@ package main;
 
 import javafx.application.Platform;
 import javafx.stage.Stage;
-
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
-import java.net.URL;
+
 
 import static java.awt.Toolkit.getDefaultToolkit;
 
@@ -59,8 +57,8 @@ public class TrayIcn {
         final SystemTray tray = SystemTray.getSystemTray();
 
         // creating popup menu
+        //final PopupMenu popup = new PopupMenu();
         final PopupMenu popup = new PopupMenu();
-
 
         /*final TrayIcon trayIcon = new TrayIcon(
                 createImage("images/ok.png", "tray icon")));*/
@@ -71,6 +69,7 @@ public class TrayIcn {
             //ImageIcon iIcon = new ImageIcon(getClass().getResourceAsStream("images/ok128.gif"));
             trayIcon = new TrayIcon(image, "Nomad", popup);
             tray.add(trayIcon);
+            trayIcon.setImageAutoSize(true);
             //trayIcon.setPopupMenu(popup);
         }
         catch(AWTException e) {
