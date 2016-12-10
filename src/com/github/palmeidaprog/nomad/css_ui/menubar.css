@@ -31,9 +31,11 @@ Custom menus properties
     -fx-opacity: 0.9;
 }
 
+/*
 .menu:hover {
     -fx-background-color: darkgray;
 }
+*/
 
 
 

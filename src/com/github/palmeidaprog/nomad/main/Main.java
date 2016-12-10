@@ -34,12 +34,12 @@ public class Main extends Application {
         }
         mainStage = primaryStage; // saves Stage as public
         mainStage.setTitle("Nomad");
-        mainStage.setScene(new Scene(root, 300, 275));
+        mainStage.setScene(new Scene(root, 500, 550));
         mainStage.show();
         //root.setEffect(blur);
         Platform.setImplicitExit(false);
         TrayIcn.getInstance().createSystemTrayIcon();
-        mainStage.setOpacity(OPACITY);
+        //mainStage.setOpacity(OPACITY);
         //mainStage.close();
     }
 
