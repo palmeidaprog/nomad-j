@@ -7,7 +7,7 @@
         <element id="directory" name="images">
           <element id="dir-copy" path="$PROJECT_DIR$/resources/images" />
         </element>
-        <element id="file-copy" path="$PROJECT_DIR$/resources/images/ok128.gif" />
+        <element id="file-copy" path="$PROJECT_DIR$/src/com/github/palmeidaprog/nomad/resources/images/ok128.gif" />
       </element>
     </root>
   </artifact>

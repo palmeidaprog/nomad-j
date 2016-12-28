@@ -34,7 +34,7 @@ public class Main extends Application {
         }
         mainStage = primaryStage; // saves Stage as public
         mainStage.setTitle("Nomad");
-        mainStage.setScene(new Scene(root, 500, 550));
+        mainStage.setScene(new Scene(root, 750 , 600));
         mainStage.show();
         //root.setEffect(blur);
         Platform.setImplicitExit(false);
