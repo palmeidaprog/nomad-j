@@ -2,16 +2,19 @@
 
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="503.0" minWidth="669.0" prefHeight="503.0" prefWidth="669.0" style="-fx-background-color: null; -fx-font-family: &quot;Lucida Grande&quot;;" styleClass="background" stylesheets="@../css_ui/button.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="471.0" minWidth="629.0" prefHeight="472.0" prefWidth="629.0" style="-fx-background-color: null; -fx-font-family: &quot;Lucida Grande&quot;;" styleClass="background" stylesheets="@../css_ui/button.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <HBox prefHeight="49.0" prefWidth="750.0" stylesheets="@../css_ui/background.css" BorderPane.alignment="CENTER">
          <effect>
@@ -30,18 +33,58 @@
       </HBox>
    </top>
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="408.0" prefWidth="632.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER_LEFT" spacing="20.0">
                <children>
-                  <Label prefHeight="25.0" prefWidth="94.0" text="Nome do Perfil" />
-                  <TextField prefHeight="26.0" prefWidth="298.0" />
+                  <Label text="Nome do Perfil:" />
+                  <TextField prefHeight="26.0" prefWidth="298.0" promptText="Escolha o nome do perfil" />
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" spacing="20.0">
                <children>
                   <CheckBox mnemonicParsing="false" text="Modo Portátil" />
                   <ComboBox disable="true" prefWidth="150.0" promptText="USB Pendrive" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" spacing="20.0">
+               <children>
+                  <Label text="Pasta Recipiente:" />
+                  <Label style="-fx-font-family: &quot;Arial&quot;;" text="Escolher pasta destino" />
+                  <Button mnemonicParsing="false" text="Escolher" />
+               </children>
+            </HBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox>
+                     <children>
+                        <Label text="Escolherem pastas a serem sincronizadas" />
+                     </children>
+                  </HBox>
+                  <HBox spacing="5.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <TableView prefHeight="171.0" prefWidth="494.0" HBox.hgrow="ALWAYS">
+                          <columns>
+                            <TableColumn prefWidth="95.0" style="-fx-font-size: 12;" text="Apenas Conteudo" />
+                            <TableColumn prefWidth="533.0" style="-fx-font-size: 12;" text="Pastas" />
+                          </columns>
+                        </TableView>
+                        <VBox prefHeight="184.0" prefWidth="83.0" spacing="5.0" HBox.hgrow="NEVER">
+                           <children>
+                              <Button mnemonicParsing="false" text="Adicionar" />
+                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="78.0" text="Remover" />
+                           </children>
+                           <padding>
+                              <Insets top="5.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <HBox alignment="CENTER" prefHeight="58.0" prefWidth="589.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="117.0" text="CRIAR PERFIL" />
                </children>
             </HBox>
          </children>
