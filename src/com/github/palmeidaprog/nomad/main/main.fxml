@@ -27,7 +27,7 @@
             <DropShadow />
          </effect>
          <children>
-            <VBox alignment="CENTER" prefHeight="120.0" prefWidth="151.0">
+            <VBox alignment="CENTER" onMouseClicked="#addStage" prefHeight="120.0" prefWidth="151.0">
                <children>
                   <ImageView fitHeight="65.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
                      <image>

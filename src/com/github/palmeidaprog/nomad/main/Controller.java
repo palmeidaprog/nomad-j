@@ -8,7 +8,10 @@ package com.github.palmeidaprog.nomad.main;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.effect.Effect;
@@ -17,8 +20,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.paint.Color;
+
+import java.io.IOException;
+
+import static com.github.palmeidaprog.nomad.main.Main.mainStage;
 
 public class Controller {
     private int i = 1;
@@ -45,6 +53,21 @@ public class Controller {
     }
 
     //--Events--------------------------------------------
+
+    public void addStage() {
+        FXMLLoader addLoader = new FXMLLoader(getClass().getResource("add.fxml"));
+        Parent root = null;
+        Stage addStage = new Stage();
+        //mainLoader.setController(Controller.getInstance());
+        try {
+            root = addLoader.load();
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+        addStage.setTitle("Adicionar novo perfil");
+        addStage.setScene(new Scene(root, 630 , 450));
+        addStage.show();
+    }
 
     public void buttonClicked() {
         /*if(i == 0) i = 1;
