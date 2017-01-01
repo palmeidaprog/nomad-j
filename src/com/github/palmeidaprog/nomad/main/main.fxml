@@ -12,6 +12,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -27,18 +28,21 @@
             <DropShadow />
          </effect>
          <children>
-            <VBox alignment="CENTER" onMouseClicked="#addStage" prefHeight="120.0" prefWidth="151.0">
+            <VBox alignment="CENTER" onMouseClicked="#addStage" onMouseEntered="#mouseEnterAdd" onMouseExited="#mouseExitAdd" prefHeight="120.0" prefWidth="151.0" spacing="10.0">
                <children>
-                  <ImageView fitHeight="65.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/images/add.png" />
-                     </image>
-                  </ImageView>
                   <Label text="Adicionar" textFill="WHITE">
                      <font>
                         <Font name="Lucida Grande" size="13.0" />
                      </font>
                   </Label>
+                  <ImageView fx:id="addImage" fitHeight="65.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/images/add.png" />
+                     </image>
+                     <effect>
+                        <Reflection />
+                     </effect>
+                  </ImageView>
                </children>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -47,18 +51,21 @@
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </VBox.margin>
             </VBox>
-            <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="121.0" prefWidth="136.0">
+            <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" onMouseEntered="#mouseEnterEdit" onMouseExited="#mouseExitEdit" prefHeight="121.0" prefWidth="136.0" spacing="10.0">
                <children>
-                  <ImageView fitHeight="65.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/images/edit.png" />
-                     </image>
-                  </ImageView>
                   <Label text="Editar" textFill="WHITE">
                      <font>
                         <Font name="Lucida Grande" size="13.0" />
                      </font>
                   </Label>
+                  <ImageView fx:id="editImage" fitHeight="65.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/images/edit.png" />
+                     </image>
+                     <effect>
+                        <Reflection />
+                     </effect>
+                  </ImageView>
                </children>
                <VBox.margin>
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
@@ -67,18 +74,21 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </VBox>
-            <VBox alignment="CENTER" layoutX="10.0" layoutY="183.0" prefHeight="120.0" prefWidth="136.0">
+            <VBox alignment="CENTER" layoutX="10.0" layoutY="183.0" onMouseEntered="#mouseEnterDelete" onMouseExited="#mouseExitDelete" prefHeight="120.0" prefWidth="136.0" spacing="10.0">
                <children>
-                  <ImageView fitHeight="65.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/images/trash.png" />
-                     </image>
-                  </ImageView>
                   <Label text="Excluir" textFill="WHITE">
                      <font>
                         <Font name="Lucida Grande" size="13.0" />
                      </font>
                   </Label>
+                  <ImageView fx:id="deleteImage" fitHeight="65.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/images/trash.png" />
+                     </image>
+                     <effect>
+                        <Reflection />
+                     </effect>
+                  </ImageView>
                </children>
                <VBox.margin>
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />

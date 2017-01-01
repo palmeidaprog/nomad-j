@@ -8,6 +8,7 @@ package com.github.palmeidaprog.nomad.main;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -29,6 +30,8 @@ import java.io.IOException;
 import static com.github.palmeidaprog.nomad.main.Main.mainStage;
 
 public class Controller {
+
+    @FXML public ImageView addImage, editImage, deleteImage;
     private int i = 1;
     private static final double W = 330;
     private static final double H = 590;
@@ -52,7 +55,37 @@ public class Controller {
         return instance;
     }
 
-    //--Events--------------------------------------------
+    //--Enter Events--------------------------------------------
+
+    public void mouseEnterAdd() {
+        /*addImage.setOpacity(0);*/
+        UIEffects.getInstance().fadeAnim(addImage, 1);
+    }
+
+    public void mouseEnterEdit() {
+        /*addImage.setOpacity(0);*/
+        UIEffects.getInstance().fadeAnim(editImage, 1);
+    }
+    public void mouseEnterDelete() {
+        /*addImage.setOpacity(0);*/
+        UIEffects.getInstance().fadeAnim(deleteImage, 1);
+    }
+
+    //--Exit Events--------------------------------------------
+
+    public void mouseExitAdd() {
+        UIEffects.getInstance().fadeAnim(addImage, 0);
+    }
+
+    public void mouseExitEdit() {
+        UIEffects.getInstance().fadeAnim(editImage, 0);
+    }
+
+    public void mouseExitDelete() {
+        UIEffects.getInstance().fadeAnim(deleteImage, 0);
+    }
+
+    //--Click Events--------------------------------------------
 
     public void addStage() {
         FXMLLoader addLoader = new FXMLLoader(getClass().getResource("add.fxml"));
@@ -65,7 +98,7 @@ public class Controller {
             e.printStackTrace();
         }
         addStage.setTitle("Adicionar novo perfil");
-        addStage.setScene(new Scene(root, 630 , 450));
+        addStage.setScene(new Scene(root, 630 , 550));
         addStage.show();
     }
 
