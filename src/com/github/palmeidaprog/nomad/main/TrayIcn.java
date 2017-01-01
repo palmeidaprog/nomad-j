@@ -88,7 +88,7 @@ public class TrayIcn {
         final Stage stage = Main.mainStage;
         MenuItem openItem = new MenuItem("Abrir Programa");
         openItem.addActionListener(event -> {
-           stage.show();
+           Main.mainStage.show(); // TODO: Fix the not in FX thread.
         });
 
         // setup the popup menu for the application.

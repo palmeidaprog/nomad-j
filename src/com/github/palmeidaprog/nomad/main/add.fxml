@@ -65,8 +65,8 @@
                      <children>
                         <TableView prefHeight="171.0" prefWidth="494.0" HBox.hgrow="ALWAYS">
                           <columns>
-                            <TableColumn prefWidth="118.0" style="-fx-font-size: 12;" text="Apenas Conteudo" />
-                            <TableColumn prefWidth="510.0" style="-fx-font-size: 12;" text="Pastas" />
+                            <TableColumn id="contentTableCol" prefWidth="118.0" style="-fx-font-size: 12;" text="Apenas Conteudo" />
+                            <TableColumn id="dirTableCol" prefWidth="510.0" style="-fx-font-size: 12;" text="Pastas" />
                           </columns>
                         </TableView>
                         <VBox prefHeight="184.0" prefWidth="83.0" spacing="5.0" HBox.hgrow="NEVER">
