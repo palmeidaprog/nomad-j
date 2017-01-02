@@ -91,7 +91,7 @@ public class Controller {
         FXMLLoader addLoader = new FXMLLoader(getClass().getResource("add.fxml"));
         Parent root = null;
         Stage addStage = new Stage();
-        //mainLoader.setController(Controller.getInstance());
+        addLoader.setController(AddController.getInstance());
         try {
             root = addLoader.load();
         } catch(IOException e) {
