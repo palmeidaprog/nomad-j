@@ -147,7 +147,7 @@
             </HBox>
             <HBox prefHeight="358.0" prefWidth="583.0">
                <children>
-                  <TableView editable="true" prefHeight="358.0" prefWidth="577.0" style="-fx-font-family: &quot;Lucida Grande&quot;;" stylesheets="@../css_ui/tableview.css" HBox.hgrow="ALWAYS">
+                  <TableView fx:id="profileTable" editable="true" prefHeight="358.0" prefWidth="577.0" style="-fx-font-family: &quot;Lucida Grande&quot;;" stylesheets="@../css_ui/tableview.css" HBox.hgrow="ALWAYS">
                     <columns>
                       <TableColumn editable="false" minWidth="0.0" prefWidth="70.0" style="-fx-font-family: &quot;Lucida Grande&quot;;" text="Ativo" />
                       <TableColumn editable="false" prefWidth="414.0" text="Nome do Perfil" />
