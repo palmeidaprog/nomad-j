@@ -9,12 +9,13 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="451.0" minWidth="629.0" prefHeight="542.0" prefWidth="629.0" style="-fx-background-color: null; -fx-font-family: &quot;Lucida Grande&quot;;" styleClass="background" stylesheets="@../css_ui/button.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="451.0" minWidth="629.0" prefHeight="542.0" prefWidth="700.0" style="-fx-background-color: null; -fx-font-family: &quot;Lucida Grande&quot;;" styleClass="background" stylesheets="@../css_ui/button.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <HBox stylesheets="@../css_ui/background.css" BorderPane.alignment="CENTER">
          <effect>
@@ -50,11 +51,11 @@
             <HBox alignment="CENTER_LEFT" spacing="20.0">
                <children>
                   <Label text="Pasta Recipiente:" />
-                  <Label style="-fx-font-family: &quot;Arial&quot;;" text="Escolher pasta destino" />
+                  <Label style="-fx-font-family: &quot;Arial&quot;;" text="Escolher pasta destino" wrapText="true" />
                   <Button mnemonicParsing="false" text="Escolher" />
                </children>
             </HBox>
-            <VBox prefHeight="294.0" prefWidth="589.0" VBox.vgrow="ALWAYS">
+            <VBox prefHeight="294.0" prefWidth="589.0" spacing="10.0" VBox.vgrow="ALWAYS">
                <children>
                   <HBox>
                      <children>
@@ -65,14 +66,18 @@
                      <children>
                         <TableView fx:id="foldersTable" prefHeight="171.0" prefWidth="494.0" HBox.hgrow="ALWAYS">
                           <columns>
-                            <TableColumn fx:id="contentCol" prefWidth="118.0" style="-fx-font-size: 12;" text="Apenas Conteudo" />
-                            <TableColumn fx:id="foldersCol" prefWidth="510.0" style="-fx-font-size: 12;" text="Pastas" />
+                            <TableColumn fx:id="foldersCol" editable="false" prefWidth="408.0" style="-fx-font-size: 12;" text="Pastas" />
+                            <TableColumn fx:id="contentCol" editable="false" minWidth="0.0" prefWidth="126.0" sortable="false" style="-fx-font-size: 12; -fx-alignment: center;" text="Apenas Conteúdo" />
                           </columns>
+                           <tooltip>
+                              <Tooltip text="Opção APENAS CONTEUDO" />
+                           </tooltip>
                         </TableView>
-                        <VBox prefHeight="184.0" prefWidth="83.0" spacing="5.0" HBox.hgrow="NEVER">
+                        <VBox prefHeight="273.0" prefWidth="134.0" spacing="5.0" HBox.hgrow="NEVER">
                            <children>
-                              <Button mnemonicParsing="false" text="Adicionar" />
-                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="78.0" text="Remover" />
+                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="132.0" text="Adicionar Pasta" />
+                              <Button layoutX="10.0" layoutY="15.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="132.0" text="Adicionar Arquivo" />
+                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="132.0" text="Remover" />
                            </children>
                            <padding>
                               <Insets top="5.0" />
@@ -81,15 +86,18 @@
                      </children>
                   </HBox>
                </children>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
             </VBox>
             <HBox alignment="CENTER" prefHeight="35.0" prefWidth="589.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="117.0" stylesheets="@../css_ui/button_dark.css" text="CRIAR PERFIL" />
+                  <Button mnemonicParsing="false" onMouseClicked="#clickCreateProfile" prefHeight="27.0" prefWidth="117.0" stylesheets="@../css_ui/button_dark.css" text="CRIAR PERFIL" />
                </children>
             </HBox>
          </children>
          <padding>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            <Insets bottom="20.0" left="20.0" right="5.0" top="20.0" />
          </padding>
       </VBox>
    </center>

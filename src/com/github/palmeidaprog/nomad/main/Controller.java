@@ -111,7 +111,7 @@ public class Controller implements Initializable {
             e.printStackTrace();
         }
         addStage.setTitle("Adicionar novo perfil");
-        addStage.setScene(new Scene(root, 630 , 550));
+        addStage.setScene(new Scene(root, 700, 542));
         addStage.show();
     }
 

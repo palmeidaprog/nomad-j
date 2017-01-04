@@ -1,5 +1,3 @@
-package com.github.palmeidaprog.nomad.main;
-
 /*
 * add.fxml's Controller
 * Nomad-j
@@ -7,18 +5,28 @@ package com.github.palmeidaprog.nomad.main;
 * @email palmeidaprogramming@gmail.com
 */
 
-import com.github.palmeidaprog.nomad.sync.Profile;
+package com.github.palmeidaprog.nomad.main;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import java.io.File;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-import static javafx.application.ConditionalFeature.FXML;
+public class AddController implements Initializable {
 
-public class AddController {
-    @FXML private TableView<Profile> foldersTable;
-    @FXML private TableColumn<Profile, String> foldersCol;
-    @FXML private TableColumn<Profile, CheckBox> contentCol;
+    // TableView objects
+    @FXML private TableView<Folders> foldersTable;
+    @FXML private TableColumn<Folders, String> foldersCol;
+    @FXML private TableColumn<Folders, CheckBox> contentCol;
+    private ObservableList<Folders> foldersList = FXCollections.observableArrayList(new
+            Folders(new File("back.jpg")));
 
     //--Singleton design--------------------------------------------------
     private volatile static AddController instance = null;
@@ -30,5 +38,18 @@ public class AddController {
         return instance;
     }
 
+    //--Implementing Initializable interface-------------------------------
+
+    @Override
+    public void initialize(URL u, ResourceBundle rb) {
+        foldersCol.setCellValueFactory(new PropertyValueFactory<>("folder"));
+        contentCol.setCellValueFactory(new PropertyValueFactory<>("content"));
+        foldersTable.setItems(foldersList);
+    }
+
     //---------------------------------------------------------------------
+
+    public void clickCreateProfile() {
+
+    }
 }
