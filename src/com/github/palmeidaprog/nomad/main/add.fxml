@@ -44,15 +44,15 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" spacing="20.0">
                <children>
-                  <CheckBox mnemonicParsing="false" text="Modo Portátil" />
-                  <ComboBox disable="true" prefWidth="150.0" promptText="USB Pendrive" />
+                  <CheckBox fx:id="portableCheck" mnemonicParsing="false" onMouseClicked="#portableCheckClicked" text="Modo Portátil" />
+                  <ComboBox fx:id="portableCombo" disable="true" prefWidth="150.0" promptText="USB Pendrive" />
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" spacing="20.0">
                <children>
                   <Label text="Pasta Recipiente:" />
-                  <Label style="-fx-font-family: &quot;Arial&quot;;" text="Escolher pasta destino" wrapText="true" />
-                  <Button mnemonicParsing="false" text="Escolher" />
+                  <Label fx:id="destDirLabel" style="-fx-font-family: &quot;Arial&quot;;" text="Escolher pasta destino" wrapText="true" />
+                  <Button mnemonicParsing="false" onMouseClicked="#chooseClicked" text="Escolher" />
                </children>
             </HBox>
             <VBox prefHeight="294.0" prefWidth="589.0" spacing="10.0" VBox.vgrow="ALWAYS">
@@ -70,12 +70,12 @@
                             <TableColumn fx:id="contentCol" editable="false" minWidth="0.0" prefWidth="126.0" sortable="false" style="-fx-font-size: 12; -fx-alignment: center;" text="Apenas Conteúdo" />
                           </columns>
                            <tooltip>
-                              <Tooltip text="Opção APENAS CONTEUDO" />
+                              <Tooltip text="Opção &quot;Apenas Conteúdo&quot; se marcada sincronizará o que está dentro da pasta marcada dentro da pasta destino. Se desmarcada criará a pasta no destino." />
                            </tooltip>
                         </TableView>
                         <VBox prefHeight="273.0" prefWidth="134.0" spacing="5.0" HBox.hgrow="NEVER">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="132.0" text="Adicionar Pasta" />
+                              <Button fx:id="addFolderBtn" mnemonicParsing="false" onMouseClicked="#addFolderClicked" prefHeight="26.0" prefWidth="132.0" text="Adicionar Pasta" />
                               <Button layoutX="10.0" layoutY="15.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="132.0" text="Adicionar Arquivo" />
                               <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="132.0" text="Remover" />
                            </children>

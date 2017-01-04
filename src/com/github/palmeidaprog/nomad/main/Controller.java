@@ -40,6 +40,7 @@ public class Controller implements Initializable {
     private static final Effect frostEffect =
             new BoxBlur(BLUR_AMOUNT, BLUR_AMOUNT, 3);
 
+    private Stage addStage;
 
     //--Singleton design----------------------------------
     private volatile static Controller instance = null;
@@ -109,7 +110,7 @@ public class Controller implements Initializable {
     public void addStage() {
         FXMLLoader addLoader = new FXMLLoader(getClass().getResource("add.fxml"));
         Parent root = null;
-        Stage addStage = new Stage();
+        addStage = new Stage();
         addLoader.setController(AddController.getInstance());
         try {
             root = addLoader.load();
@@ -118,6 +119,7 @@ public class Controller implements Initializable {
         }
         addStage.setTitle("Adicionar novo perfil");
         addStage.setScene(new Scene(root, 700, 542));
+        AddController.getInstance().setStage(addStage);
         addStage.show();
     }
 
