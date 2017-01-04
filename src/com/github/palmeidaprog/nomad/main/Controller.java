@@ -1,10 +1,10 @@
-package com.github.palmeidaprog.nomad.main;
-
 /*
 * Nomad-j
 * @author Paulo R. Almeida Filho
 * @email palmeidaprogramming@gmail.com
 */
+
+package com.github.palmeidaprog.nomad.main;
 
 import com.github.palmeidaprog.nomad.sync.Profile;
 import javafx.beans.property.DoubleProperty;
@@ -12,27 +12,17 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.SnapshotParameters;
 import javafx.scene.control.TableView;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.effect.Effect;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import javafx.scene.paint.Color;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import static com.github.palmeidaprog.nomad.main.Main.mainStage;
 
 public class Controller implements Initializable {
 
@@ -66,6 +56,22 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL u,ResourceBundle rb) {
         profileTable.requestFocus(); // todo: Find a way to stop TextField requesting focus
+        initializeDialogStage();
+    }
+
+    private void initializeDialogStage() {
+        FXMLLoader dialogLoad = new FXMLLoader(getClass().getResource("dialog_nomad.fxml"));
+        Parent dialogRoot = null;
+        Stage dialogStage = new Stage();
+        dialogLoad.setController(DialogController.getInstance());
+        try {
+            dialogRoot = dialogLoad.load();
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+        dialogStage.setTitle("Dialog");
+        dialogStage.setScene(new Scene(dialogRoot, 500, 190));
+        DialogController.getInstance().setStage(dialogStage);
     }
 
     //--Enter Events--------------------------------------------
@@ -121,35 +127,8 @@ public class Controller implements Initializable {
         System.out.println("Clicked"); // @debug
         TrayIcn.getInstance().changeIcon(i);*/
         DoubleProperty sD = new SimpleDoubleProperty(H);
-        freeze(Main.root, sD);
 
     }
 
-    // create a frosty pane from a background node.
-    private StackPane freeze(Node background, DoubleProperty y) {
-        Image frostImage = background.snapshot(
-                new SnapshotParameters(),
-                null
-        );
-        ImageView frost = new ImageView(frostImage);
-
-        Rectangle filler = new Rectangle(0, 0, W, H);
-        filler.setFill(Color.AZURE);
-
-        Pane frostPane = new Pane(frost);
-        frostPane.setEffect(frostEffect);
-
-        StackPane frostView = new StackPane(
-                filler,
-                frostPane
-        );
-
-        Rectangle clipShape = new Rectangle(0, y.get(), W, H);
-        frostView.setClip(clipShape);
-
-        clipShape.yProperty().bind(y);
-
-        return frostView;
-    }
 
 }

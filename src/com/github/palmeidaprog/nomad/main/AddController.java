@@ -15,6 +15,8 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import sun.awt.AWTAccessor;
+
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -50,6 +52,12 @@ public class AddController implements Initializable {
     //---------------------------------------------------------------------
 
     public void clickCreateProfile() {
+        validateCreateProfile();
+    }
 
+    //todo: implement validation to profile creation
+    public void validateCreateProfile() { // todo: getfocus back to addStage
+        DialogController.getInstance().getStage("Erro", "Erro Tit", "Corpo",
+                "Butão").show();
     }
 }
