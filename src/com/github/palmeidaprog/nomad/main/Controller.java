@@ -1,4 +1,5 @@
 /*
+* Main window's controller
 * Nomad-j
 * @author Paulo R. Almeida Filho
 * @email palmeidaprogramming@gmail.com
@@ -40,6 +41,7 @@ public class Controller implements Initializable {
     private static final Effect frostEffect =
             new BoxBlur(BLUR_AMOUNT, BLUR_AMOUNT, 3);
 
+    // Window Stage Obj
     private Stage addStage;
 
     //--Singleton design----------------------------------

@@ -23,8 +23,11 @@ public class UIEffects {
 
 
     //--Effects methods---------------------------------------------------
+
     /*
-    * @param int i 0 for exit and 1 for entering a new obj*/
+    * @param img applies to ImageView the effect.
+    * @param i 0 for exiting and 1 for entering a new obj
+    * */
     public void fadeAnim(ImageView img, int i) {
         if(i == 0) {
             ft.getNode().setOpacity(1.0);

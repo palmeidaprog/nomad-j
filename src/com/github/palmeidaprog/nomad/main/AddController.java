@@ -7,7 +7,6 @@
 
 package com.github.palmeidaprog.nomad.main;
 
-import com.sun.tools.javac.comp.Check;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
