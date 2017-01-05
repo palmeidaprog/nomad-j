@@ -8,8 +8,6 @@
 package com.github.palmeidaprog.nomad.main;
 
 import com.github.palmeidaprog.nomad.sync.Profile;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;

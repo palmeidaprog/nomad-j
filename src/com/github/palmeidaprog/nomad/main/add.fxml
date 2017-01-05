@@ -45,7 +45,7 @@
             <HBox alignment="CENTER_LEFT" spacing="20.0">
                <children>
                   <CheckBox fx:id="portableCheck" mnemonicParsing="false" onMouseClicked="#portableCheckClicked" text="Modo Portátil" />
-                  <ComboBox fx:id="portableCombo" disable="true" prefWidth="150.0" promptText="USB Pendrive" />
+                  <ComboBox fx:id="portableCombo" disable="true" prefWidth="150.0" promptText="USB/Cartão SD" />
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" spacing="20.0">

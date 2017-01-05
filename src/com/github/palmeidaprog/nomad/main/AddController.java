@@ -24,21 +24,22 @@ import java.util.ResourceBundle;
 
 public class AddController implements Initializable {
     private Stage addStage;
+    private File destFolder;
 
     // TableView objects
     @FXML private TableView<Folders> foldersTable;
     @FXML private TableColumn<Folders, String> foldersCol;
     @FXML private TableColumn<Folders, CheckBox> contentCol;
     private ObservableList<Folders> foldersList = FXCollections.observableArrayList();
-    /*private ObservableList<Folders> foldersList = FXCollections.observableArrayList(new
-            Folders(new File("back.jpg")));*/
+
 
     // FXML Controls
     @FXML private Button createProfileBtn;
     @FXML private TextField profileTextF;
     @FXML private Label destDirLabel, titleLabel;
     @FXML private CheckBox portableCheck;
-    @FXML private ComboBox portableCombo;
+    @FXML private ComboBox<String> portableCombo;
+    private ObservableList<String> portableComboList; // get from StringResource class
 
 
     //--Singleton design--------------------------------------------------
@@ -55,17 +56,26 @@ public class AddController implements Initializable {
 
     @Override
     public void initialize(URL u, ResourceBundle rb) {
+        // table view
         foldersCol.setCellValueFactory(new PropertyValueFactory<>("folder"));
         contentCol.setCellValueFactory(new PropertyValueFactory<>("content"));
         foldersTable.setItems(foldersList);
         foldersTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+        // combo box
+        portableComboList = StringResources.getPortableComboList();
+        portableCombo.setItems(portableComboList);
+
+        // changing folderTable empty placeholder message
+        foldersTable.setPlaceholder(new Label(StringResources.getNoFolderAdded()));
     }
 
     //---------------------------------------------------------------------
 
     // Choose Destination Folder Button Click Event
     public void chooseClicked() {
-        destDirLabel.setText(chooser(StringResources.getDirChooserTitle(), 0).toString());
+        destFolder = chooser(StringResources.getDirChooserTitle(), 0);
+        destDirLabel.setText(destFolder.toString());
     }
 
     // select/unselect portable mode checkbox event
@@ -99,14 +109,20 @@ public class AddController implements Initializable {
         validateCreateProfile();
     }
 
-    //todo: implement validation to profile creation
-    public void validateCreateProfile() { // todo: getfocus back to addStage
-        DialogController.getInstance().getStage("Erro", "Erro Tit", "Corpo",
-                "Butão").show(); // todo: fox this stage calling
-    }
-
     //--Support methods-------------------------------------------------------------
 
+    //todo: implement validation to profile creation
+    public void validateCreateProfile() { // todo: getfocus back to addStage
+
+
+/*        DialogController.getInstance().getStage("Erro", "Erro Tit", "Corpo",
+                "Butão").show(); // todo: fox this stage calling*/
+    }
+
+    // todo: change this to Controller Class later
+    public Boolean validateProfileName(String name) {
+        return true;
+    }
 
     // clean the add/edit window from previous information
     private void cleanAddStage() {
