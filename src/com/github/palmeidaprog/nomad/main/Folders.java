@@ -11,7 +11,7 @@ import javafx.scene.control.CheckBox;
 import java.io.File;
 
 
-public class Folders { // todo: Data model for foldersTable (Incomplete)
+public class Folders {
     private File folder;
     private CheckBox content;
 

@@ -34,7 +34,9 @@ public class AddController implements Initializable {
             Folders(new File("back.jpg")));*/
 
     // FXML Controls
-    @FXML private Label destDirLabel;
+    @FXML private Button createProfileBtn;
+    @FXML private TextField profileTextF;
+    @FXML private Label destDirLabel, titleLabel;
     @FXML private CheckBox portableCheck;
     @FXML private ComboBox portableCombo;
 
@@ -105,6 +107,12 @@ public class AddController implements Initializable {
 
     //--Support methods-------------------------------------------------------------
 
+
+    // clean the add/edit window from previous information
+    private void cleanAddStage() {
+        //todo: clear all the add stage controls before closing the window
+    }
+
     /*
     * Directory/File chooser
     * @param title Window Title
@@ -117,7 +125,7 @@ public class AddController implements Initializable {
             wChooser.setInitialDirectory(new File("/"));
             return wChooser.showDialog(addStage);
         }
-        else {
+        else { // todo: implement later multiple file selection
             FileChooser wChooser = new FileChooser();
             wChooser.setTitle(title);
             wChooser.setInitialDirectory(new File("/"));

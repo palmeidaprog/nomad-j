@@ -26,7 +26,7 @@
             <String fx:value="Text" />
          </styleClass>
          <children>
-            <Label style="-fx-font-size: 20;" text="Adicionar novo perfil" textFill="WHITE" />
+            <Label fx:id="titleLabel" style="-fx-font-size: 20;" text="Adicionar novo perfil" textFill="WHITE" />
          </children>
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -39,7 +39,7 @@
             <HBox alignment="CENTER_LEFT" spacing="20.0">
                <children>
                   <Label text="Nome do Perfil:" />
-                  <TextField prefHeight="26.0" prefWidth="298.0" promptText="Escolha o nome do perfil" />
+                  <TextField fx:id="profileTextF" prefHeight="26.0" prefWidth="298.0" promptText="Escolha o nome do perfil" />
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" spacing="20.0">
@@ -92,7 +92,7 @@
             </VBox>
             <HBox alignment="CENTER" prefHeight="35.0" prefWidth="589.0">
                <children>
-                  <Button mnemonicParsing="false" onMouseClicked="#clickCreateProfile" prefHeight="27.0" prefWidth="117.0" stylesheets="@../css_ui/button_dark.css" text="CRIAR PERFIL" />
+                  <Button fx:id="createProfileBtn" mnemonicParsing="false" onMouseClicked="#clickCreateProfile" prefHeight="27.0" prefWidth="117.0" stylesheets="@../css_ui/button_dark.css" text="CRIAR PERFIL" />
                </children>
             </HBox>
          </children>

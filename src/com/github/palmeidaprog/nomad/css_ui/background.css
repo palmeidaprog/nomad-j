@@ -5,8 +5,7 @@ Custom VBox properties
 */
 
 .background {
-	/*-fx-background-image: url("../main/back.jpg");*/
-    -fx-background-color:  #2f2f2f; /* todo: Remove this */
+    -fx-background-color:  #2f2f2f;
 }
 
 
