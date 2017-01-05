@@ -14,9 +14,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class AddController implements Initializable {
@@ -26,8 +29,9 @@ public class AddController implements Initializable {
     @FXML private TableView<Folders> foldersTable;
     @FXML private TableColumn<Folders, String> foldersCol;
     @FXML private TableColumn<Folders, CheckBox> contentCol;
-    private ObservableList<Folders> foldersList = FXCollections.observableArrayList(new
-            Folders(new File("back.jpg")));
+    private ObservableList<Folders> foldersList = FXCollections.observableArrayList();
+    /*private ObservableList<Folders> foldersList = FXCollections.observableArrayList(new
+            Folders(new File("back.jpg")));*/
 
     // FXML Controls
     @FXML private Label destDirLabel;
@@ -52,16 +56,14 @@ public class AddController implements Initializable {
         foldersCol.setCellValueFactory(new PropertyValueFactory<>("folder"));
         contentCol.setCellValueFactory(new PropertyValueFactory<>("content"));
         foldersTable.setItems(foldersList);
+        foldersTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
 
     //---------------------------------------------------------------------
 
     // Choose Destination Folder Button Click Event
     public void chooseClicked() {
-        DirectoryChooser dirChooser = new DirectoryChooser();
-        dirChooser.setTitle("Escolher Pasta Destino");
-        dirChooser.setInitialDirectory(new File("/"));
-        destDirLabel.setText(dirChooser.showDialog(addStage).toString());
+        destDirLabel.setText(chooser(StringResources.getDirChooserTitle(), 0).toString());
     }
 
     // select/unselect portable mode checkbox event
@@ -76,10 +78,19 @@ public class AddController implements Initializable {
 
     // add folder button click event
     public void addFolderClicked() {
-        DirectoryChooser dirChooser = new DirectoryChooser();
-        dirChooser.setTitle("Escolher pasta a ser adiionada:");
-        dirChooser.setInitialDirectory(new File("/"));
-        foldersList.add(new Folders(dirChooser.showDialog(addStage)));
+        foldersList.add(new Folders(chooser(StringResources.getDirChooserTitle(), 0)));
+    }
+
+    // add file button click event
+    public void addFileClicked() {
+        foldersList.add(new Folders(chooser(StringResources.getFileChooserTitle(), 1)));
+    }
+
+    // remove item from foldersTable
+    public void removeClicked() {
+        List<Folders> toRemove = new ArrayList<>();
+        toRemove.addAll(foldersTable.getSelectionModel().getSelectedItems());
+        foldersList.removeAll(toRemove);
     }
 
     public void clickCreateProfile() {
@@ -93,6 +104,28 @@ public class AddController implements Initializable {
     }
 
     //--Support methods-------------------------------------------------------------
+
+    /*
+    * Directory/File chooser
+    * @param title Window Title
+    * @param i 0 to choose a directory and 1 for directory
+    */
+    private File chooser(String title, int i) {
+        if(i == 0) {
+            DirectoryChooser wChooser = new DirectoryChooser();
+            wChooser.setTitle(title);
+            wChooser.setInitialDirectory(new File("/"));
+            return wChooser.showDialog(addStage);
+        }
+        else {
+            FileChooser wChooser = new FileChooser();
+            wChooser.setTitle(title);
+            wChooser.setInitialDirectory(new File("/"));
+            wChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter(
+                    StringResources.getFileExtensionAll(), "*.*"));
+            return wChooser.showOpenDialog(addStage);
+        }
+    }
 
     public void setStage(Stage s) {
         addStage = s;

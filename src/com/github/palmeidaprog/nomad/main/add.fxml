@@ -76,8 +76,8 @@
                         <VBox prefHeight="273.0" prefWidth="134.0" spacing="5.0" HBox.hgrow="NEVER">
                            <children>
                               <Button fx:id="addFolderBtn" mnemonicParsing="false" onMouseClicked="#addFolderClicked" prefHeight="26.0" prefWidth="132.0" text="Adicionar Pasta" />
-                              <Button layoutX="10.0" layoutY="15.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="132.0" text="Adicionar Arquivo" />
-                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="132.0" text="Remover" />
+                              <Button layoutX="10.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#addFileClicked" prefHeight="26.0" prefWidth="132.0" text="Adicionar Arquivo" />
+                              <Button mnemonicParsing="false" onMouseClicked="#removeClicked" prefHeight="26.0" prefWidth="132.0" text="Remover" />
                            </children>
                            <padding>
                               <Insets top="5.0" />

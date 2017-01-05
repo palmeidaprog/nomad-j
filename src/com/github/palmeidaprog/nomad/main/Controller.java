@@ -29,17 +29,9 @@ public class Controller implements Initializable {
 
     @FXML public ImageView addImage, editImage, deleteImage;
     @FXML private TableView<Profile> profileTable;
-    private int i = 1;
-    private static final double W = 330;
-    private static final double H = 590;
 
     private static final double BLUR_AMOUNT = 60;
     private static final Duration SLIDE_DURATION = Duration.seconds(0.4);
-
-    private static final double UPPER_SLIDE_POSITION = 100;
-
-    private static final Effect frostEffect =
-            new BoxBlur(BLUR_AMOUNT, BLUR_AMOUNT, 3);
 
     // Window Stage Obj
     private Stage addStage;
@@ -119,7 +111,7 @@ public class Controller implements Initializable {
         } catch(IOException e) {
             e.printStackTrace();
         }
-        addStage.setTitle("Adicionar novo perfil");
+        addStage.setTitle(StringResources.getAddStageTitle());
         addStage.setScene(new Scene(root, 700, 542));
         AddController.getInstance().setStage(addStage);
         addStage.show();
@@ -130,7 +122,7 @@ public class Controller implements Initializable {
         else i = 0;
         System.out.println("Clicked"); // @debug
         TrayIcn.getInstance().changeIcon(i);*/
-        DoubleProperty sD = new SimpleDoubleProperty(H);
+        //DoubleProperty sD = new SimpleDoubleProperty(H);
 
     }
 
