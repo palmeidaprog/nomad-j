@@ -1,5 +1,6 @@
 /*
 * dialog_nomad.fxml's Controller
+* Loaded in Controller Class (Main window's controller)
 * Nomad-j
 * @author Paulo R. Almeida Filho
 * @email palmeidaprogramming@gmail.com
@@ -33,11 +34,22 @@ public class DialogController {
         dialogStage = s;
     }
 
+    /*
+    * Custom dialog call
+    * @param title Window dialog title
+    * @param title2 header label
+    * @param bodyText Body Label's Text
+    * @param buttonText Button's Text
+    */
     public Stage getStage(String title, String title2, String bodyText, String buttonText) {
         dialogStage.setTitle(title);
         titleLabel.setText(title2);
         bodyLabel.setText(bodyText);
         okButton.setText(buttonText);
         return dialogStage;
+    }
+
+    public void closeStage() {
+        dialogStage.close();
     }
 }

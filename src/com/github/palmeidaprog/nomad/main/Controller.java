@@ -63,7 +63,7 @@ public class Controller implements Initializable {
             e.printStackTrace();
         }
         dialogStage.setTitle("Dialog");
-        dialogStage.setScene(new Scene(dialogRoot, 500, 190));
+        dialogStage.setScene(new Scene(dialogRoot, 500, 250));
         DialogController.getInstance().setStage(dialogStage);
     }
 

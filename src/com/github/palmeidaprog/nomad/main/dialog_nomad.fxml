@@ -5,11 +5,13 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="188.0" minWidth="450.0" prefHeight="188.0" prefWidth="500.0" style="-fx-background-color: null; -fx-font-family: &quot;Lucida Grande&quot;;" styleClass="background" stylesheets="@../css_ui/button.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="188.0" minWidth="450.0" prefHeight="250.0" prefWidth="500.0" style="-fx-background-color: null; -fx-font-family: &quot;Lucida Grande&quot;;" styleClass="background" stylesheets="@../css_ui/button.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <HBox stylesheets="@../css_ui/background.css" BorderPane.alignment="CENTER">
          <effect>
@@ -20,7 +22,7 @@
             <String fx:value="Text" />
          </styleClass>
          <children>
-            <Label fx:id="titleLabel" style="-fx-font-size: 18;" text="Adicionar novo perfil" textFill="WHITE" />
+            <Label fx:id="titleLabel" alignment="CENTER" prefHeight="18.0" prefWidth="466.0" style="-fx-font-size: 14;" text="Adicionar novo perfil" textFill="WHITE" />
          </children>
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -28,16 +30,28 @@
       </HBox>
    </top>
    <center>
-      <VBox prefHeight="108.0" prefWidth="474.0" spacing="10.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="153.0" prefWidth="500.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" spacing="20.0">
+            <HBox alignment="CENTER" spacing="35.0">
                <children>
-                  <Label fx:id="bodyLabel" text="Nome do Perfil:" />
+                  <VBox prefHeight="112.0" prefWidth="113.0">
+                     <children>
+                        <ImageView fitHeight="96.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/images/comment_error.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+                  <Label fx:id="bodyLabel" prefHeight="153.0" prefWidth="389.0" text="Nome do Perfil:" textAlignment="JUSTIFY" wrapText="true">
+                     <padding>
+                        <Insets right="15.0" />
+                     </padding></Label>
                </children>
             </HBox>
-            <HBox alignment="BOTTOM_CENTER" prefHeight="99.0" prefWidth="464.0">
+            <HBox alignment="BOTTOM_CENTER" prefHeight="72.0" prefWidth="475.0">
                <children>
-                  <Button fx:id="okButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="117.0" stylesheets="@../css_ui/button_dark.css" text="CRIAR PERFIL" />
+                  <Button fx:id="okButton" mnemonicParsing="false" onMouseClicked="#closeStage" prefHeight="27.0" prefWidth="117.0" stylesheets="@../css_ui/button_dark.css" text="CRIAR PERFIL" />
                </children>
             </HBox>
          </children>

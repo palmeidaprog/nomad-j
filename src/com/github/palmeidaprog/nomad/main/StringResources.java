@@ -34,7 +34,30 @@ public class StringResources {
     // Controls
     private static String destDirLabel = "Escolher pasta destino";
 
+    // dialog
+    private static String addDialogTitle = "Erro: Não foi possivel criar perfil";
+    private static String addDialogHeader = "Informações incompletas";
+    private static String addDialogBody = "As informações a seguir estão faltando para criar " +
+            "o perfil: ";
+    private static String addDialogBtn = "OK";
+
     //--Getters-------------------------------------------------------------------
+
+    public static String getAddDialogTitle() {
+        return addDialogTitle;
+    }
+
+    public static String getAddDialogHeader() {
+        return addDialogHeader;
+    }
+
+    public static String getAddDialogBody() {
+        return addDialogBody;
+    }
+
+    public static String getAddDialogBtn() {
+        return addDialogBtn;
+    }
 
     public static String getDestDirLabel() {
         return destDirLabel;

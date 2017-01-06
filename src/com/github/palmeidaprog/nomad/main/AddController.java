@@ -114,23 +114,42 @@ public class AddController implements Initializable {
     //todo: implement validation to profile creation
     public void validateCreateProfile() { // todo: getfocus back to addStage
         List<String> toFix = new ArrayList<>();
+        boolean showDialog = false;
+
         // if profile name is missing
         if(profileTextF.getText().equals("") || profileTextF.getText() == null) {
             toFix.add(StringResources.getProfileName());
+            showDialog = true;
         }
 
         // didn't choose the Container Folder
         if(destDirLabel.getText().equals(StringResources.getDestDirLabel())) {
             toFix.add(StringResources.getContainerFolder());
+            showDialog = true;
         }
 
+        // empty folders table
         if(foldersList.isEmpty()) {
             toFix.add(StringResources.getFoldersToSync());
+            showDialog = true;
         }
 
-        DialogController.getInstance().getStage("")
-/*        DialogController.getInstance().getStage("Erro", "Erro Tit", "Corpo",
-                "Butão").show(); // todo: fox this stage calling*/
+        // Error dialog
+        if(showDialog) {
+            String bodyText = StringResources.getAddDialogBody();
+            for(String s : toFix) {
+                bodyText = bodyText + s + ", ";
+            }
+            // replace comma at the end for a dot
+            String aux = bodyText.substring(bodyText.length() -3);
+            aux = aux.replace(",", ".");
+            bodyText = bodyText.replace(bodyText.substring(bodyText.length()-3), aux);
+
+            // show the dialog
+            DialogController.getInstance().getStage(StringResources.getAddDialogTitle(),
+                    StringResources.getAddDialogHeader(), bodyText,
+                    StringResources.getAddDialogBtn()).show();
+        }
     }
 
     // todo: change this to Controller Class later
