@@ -26,7 +26,31 @@ public class StringResources {
 
     private static String noFolderAdded = "Nenhuma pasta escolhida";
 
+    // Missing adding/editing data
+    private static String profileName = "Nome do perfil";
+    private static String containerFolder = "Pasta Recipiente";
+    private static String foldersToSync = "Pastas a serem sincronizadas";
+
+    // Controls
+    private static String destDirLabel = "Escolher pasta destino";
+
     //--Getters-------------------------------------------------------------------
+
+    public static String getDestDirLabel() {
+        return destDirLabel;
+    }
+
+    public static String getProfileName() {
+        return profileName;
+    }
+
+    public static String getContainerFolder() {
+        return containerFolder;
+    }
+
+    public static String getFoldersToSync() {
+        return foldersToSync;
+    }
 
     public static String getNoFolderAdded() {
         return noFolderAdded;

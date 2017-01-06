@@ -113,8 +113,22 @@ public class AddController implements Initializable {
 
     //todo: implement validation to profile creation
     public void validateCreateProfile() { // todo: getfocus back to addStage
+        List<String> toFix = new ArrayList<>();
+        // if profile name is missing
+        if(profileTextF.getText().equals("") || profileTextF.getText() == null) {
+            toFix.add(StringResources.getProfileName());
+        }
 
+        // didn't choose the Container Folder
+        if(destDirLabel.getText().equals(StringResources.getDestDirLabel())) {
+            toFix.add(StringResources.getContainerFolder());
+        }
 
+        if(foldersList.isEmpty()) {
+            toFix.add(StringResources.getFoldersToSync());
+        }
+
+        DialogController.getInstance().getStage("")
 /*        DialogController.getInstance().getStage("Erro", "Erro Tit", "Corpo",
                 "Butão").show(); // todo: fox this stage calling*/
     }
