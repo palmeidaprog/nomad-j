@@ -7,6 +7,8 @@
 
 package com.github.palmeidaprog.nomad.main;
 
+import com.github.palmeidaprog.nomad.sync.Profile;
+import com.github.palmeidaprog.nomad.sync.Profile.Mobile;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -21,6 +23,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
 
 public class AddController implements Initializable {
     private Stage addStage;
@@ -73,7 +76,7 @@ public class AddController implements Initializable {
     //---------------------------------------------------------------------
 
     // Choose Destination Folder Button Click Event
-    public void chooseClicked() {
+    public void chooseClicked() {//todo: clear all the add stage controls before closing the window
         destFolder = chooser(StringResources.getDirChooserTitle(), 0);
         destDirLabel.setText(destFolder.toString());
     }
@@ -105,14 +108,29 @@ public class AddController implements Initializable {
         foldersList.removeAll(toRemove);
     }
 
+    // create profile button click event
     public void clickCreateProfile() {
-        validateCreateProfile();
+        if(validateCreateProfile()) {
+            Profile profile = new Profile(profileTextF.getText(), foldersList, destFolder);
+            profile.setPortable(true);
+            if(portableCombo.getSelectionModel().getSelectedItem().equals(StringResources
+                    .getUsb())) {
+               profile.setMobile(Mobile.USB);
+            }
+            else if(portableCombo.getSelectionModel().getSelectedItem()
+                    .equals(StringResources.getHdExt())) {
+                profile.setMobile(Mobile.EXTERNALHD);
+            }
+            Controller.getInstance().addProfile(profile);
+            cleanAddStage(); // clears the windows controls
+            addStage.close();
+        }
     }
 
     //--Support methods-------------------------------------------------------------
 
     //todo: implement validation to profile creation
-    public void validateCreateProfile() { // todo: getfocus back to addStage
+    private boolean validateCreateProfile() { // todo: getfocus back to addStage
         List<String> toFix = new ArrayList<>();
         boolean showDialog = false;
 
@@ -149,6 +167,10 @@ public class AddController implements Initializable {
             DialogController.getInstance().getStage(StringResources.getAddDialogTitle(),
                     StringResources.getAddDialogHeader(), bodyText,
                     StringResources.getAddDialogBtn()).show();
+            return false;
+        }
+        else {
+            return true;
         }
     }
 
@@ -159,7 +181,11 @@ public class AddController implements Initializable {
 
     // clean the add/edit window from previous information
     private void cleanAddStage() {
-        //todo: clear all the add stage controls before closing the window
+        profileTextF.setEffect(null);
+        portableCheck.setSelected(false);
+        portableCombo.setDisable(true);
+        destDirLabel.setText(StringResources.getDestDirLabel());
+        foldersList.clear();
     }
 
     /*

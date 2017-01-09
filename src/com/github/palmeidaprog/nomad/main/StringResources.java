@@ -21,8 +21,10 @@ public class StringResources {
     private static String fileExtensionAll = "Todos Arquivos";
 
     // Combo Portable List
+    private static String usb = "USB/Cartão SD";
+    private static String hdExt = "HD Externo";
     private static ObservableList<String> portableComboList = FXCollections
-            .observableArrayList("USB/Cartão SD", "HD Externo");
+            .observableArrayList(usb, hdExt);
 
     private static String noFolderAdded = "Nenhuma pasta escolhida";
 
@@ -42,6 +44,14 @@ public class StringResources {
     private static String addDialogBtn = "OK";
 
     //--Getters-------------------------------------------------------------------
+
+    public static String getUsb() {
+        return usb;
+    }
+
+    public static String getHdExt() {
+        return hdExt;
+    }
 
     public static String getAddDialogTitle() {
         return addDialogTitle;

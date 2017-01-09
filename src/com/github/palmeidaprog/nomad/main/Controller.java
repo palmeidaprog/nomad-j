@@ -8,12 +8,17 @@
 package com.github.palmeidaprog.nomad.main;
 
 import com.github.palmeidaprog.nomad.sync.Profile;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.effect.Effect;
 import javafx.scene.image.ImageView;
@@ -24,9 +29,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
-
+    // profile table view
     @FXML public ImageView addImage, editImage, deleteImage;
     @FXML private TableView<Profile> profileTable;
+    @FXML private TableColumn<Profile, CheckBox> activeCol;
+    @FXML private TableColumn<Profile, String> profileCol;
+    @FXML private TableColumn<Profile, String> folderCol;
+    private ObservableList<Profile> profileList = FXCollections.observableArrayList();
 
     private static final double BLUR_AMOUNT = 60;
     private static final Duration SLIDE_DURATION = Duration.seconds(0.4);
@@ -48,6 +57,12 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL u,ResourceBundle rb) {
+        // profile's table
+        activeCol.setCellValueFactory(new PropertyValueFactory<>("active"));
+        profileCol.setCellValueFactory(new PropertyValueFactory<>("profileName"));
+        folderCol.setCellValueFactory(new PropertyValueFactory<>("containerFolderString"));
+        profileTable.setItems(profileList);
+
         profileTable.requestFocus(); // todo: Find a way to stop TextField requesting focus
         initializeDialogStage();
     }
@@ -124,5 +139,14 @@ public class Controller implements Initializable {
 
     }
 
+    //--Support methods-------------------------------------------------------------
 
+    public boolean validateNewProfile(String name) {
+        // todo: if profileList contains the name return false
+        return true;
+    }
+
+    public void addProfile(Profile prof) {
+        profileList.add(prof);
+    }
 }

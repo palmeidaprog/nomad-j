@@ -147,10 +147,11 @@
             </HBox>
             <HBox prefHeight="358.0" prefWidth="583.0">
                <children>
-                  <TableView fx:id="profileTable" editable="true" prefHeight="358.0" prefWidth="577.0" style="-fx-font-family: &quot;Lucida Grande&quot;;" stylesheets="@../css_ui/tableview.css" HBox.hgrow="ALWAYS">
+                  <TableView fx:id="profileTable" editable="true" prefHeight="358.0" prefWidth="577.0" style="-fx-font-family: &quot;Lucida Grande&quot;;" HBox.hgrow="ALWAYS">
                     <columns>
-                      <TableColumn editable="false" minWidth="0.0" prefWidth="70.0" style="-fx-font-family: &quot;Lucida Grande&quot;;" text="Ativo" />
-                      <TableColumn editable="false" prefWidth="414.0" text="Nome do Perfil" />
+                      <TableColumn fx:id="activeCol" editable="false" minWidth="0.0" prefWidth="70.0" sortable="false" style="-fx-font-family: &quot;Lucida Grande&quot;; -fx-alignment: center;" text="Ativo" />
+                      <TableColumn fx:id="profileCol" editable="false" prefWidth="307.0" style="-fx-alignment: center;" text="Nome do Perfil" />
+                        <TableColumn fx:id="folderCol" editable="false" prefWidth="187.0" text="Pasta Recipiente" />
                     </columns>
                      <styleClass>
                         <String fx:value="table-row-cell" />
