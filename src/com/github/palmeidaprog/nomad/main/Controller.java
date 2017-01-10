@@ -69,6 +69,9 @@ public class Controller implements Initializable {
     }
 
     private void initializeDialogStage() {
+        final double WIDTH = 500;
+        final double HEIGHT = 250;
+
         FXMLLoader dialogLoad = new FXMLLoader(getClass().getResource("dialog_nomad.fxml"));
         Parent dialogRoot = null;
         Stage dialogStage = new Stage();
@@ -79,8 +82,8 @@ public class Controller implements Initializable {
             e.printStackTrace();
         }
         dialogStage.setTitle("Dialog");
-        dialogStage.setScene(new Scene(dialogRoot, 500, 250));
-        DialogController.getInstance().setStage(dialogStage);
+        dialogStage.setScene(new Scene(dialogRoot, WIDTH, HEIGHT));
+        DialogController.getInstance().setStage(dialogStage, WIDTH, HEIGHT);
     }
 
     private void initializeAddStage() {

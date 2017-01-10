@@ -135,7 +135,12 @@ public class AddController implements Initializable {
         boolean showDialog = false;
 
         // if profile name is missing
-        if(profileTextF.getText().equals("") || profileTextF.getText() == null) {
+        try {
+            if (profileTextF.getText().equals("") || profileTextF.getText().isEmpty()) {
+                toFix.add(StringResources.getProfileName());
+                showDialog = true;
+            }
+        } catch(NullPointerException e) {
             toFix.add(StringResources.getProfileName());
             showDialog = true;
         }
@@ -163,10 +168,19 @@ public class AddController implements Initializable {
             aux = aux.replace(",", ".");
             bodyText = bodyText.replace(bodyText.substring(bodyText.length()-3), aux);
 
-            // show the dialog
-            DialogController.getInstance().getStage(StringResources.getAddDialogTitle(),
-                    StringResources.getAddDialogHeader(), bodyText,
-                    StringResources.getAddDialogBtn()).show();
+            // calculate center position for dialog
+            double x = addStage.getX() + (addStage.getWidth() - DialogController.getInstance().getWidth())/2;
+            double y = addStage.getY() + (addStage.getHeight() - DialogController.getInstance().getHeight())/2;
+
+            // show dialog
+            if(DialogController.getInstance().getStage().isShowing()) {
+                DialogController.getInstance().getStage().requestFocus();
+            }
+            else {
+                DialogController.getInstance().getStage(x, y, StringResources.getAddDialogTitle(),
+                        StringResources.getAddDialogHeader(), bodyText,
+                        StringResources.getAddDialogBtn()).show();
+            }
             return false;
         }
         else {
