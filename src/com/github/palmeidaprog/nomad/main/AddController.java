@@ -214,6 +214,19 @@ public class AddController implements Initializable {
         addStage = s;
     }
 
+    public Stage getStage() {
+        return addStage;
+    }
+
+    /*Return Stage at a specific location
+     * @param x X coord
+     * @param y Y coord*/
+    public Stage getStage(double x, double y) {
+        addStage.setX(x);
+        addStage.setY(y);
+        return addStage;
+    }
+
     // verify is file or directory exists and p
     private File validateDir(File f) {
         if(f.exists() && f.isDirectory()) {

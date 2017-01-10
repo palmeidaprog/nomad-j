@@ -65,6 +65,7 @@ public class Controller implements Initializable {
 
         profileTable.requestFocus(); // todo: Find a way to stop TextField requesting focus
         initializeDialogStage();
+        initializeAddStage();
     }
 
     private void initializeDialogStage() {
@@ -80,6 +81,21 @@ public class Controller implements Initializable {
         dialogStage.setTitle("Dialog");
         dialogStage.setScene(new Scene(dialogRoot, 500, 250));
         DialogController.getInstance().setStage(dialogStage);
+    }
+
+    private void initializeAddStage() {
+        FXMLLoader addLoader = new FXMLLoader(getClass().getResource("add.fxml"));
+        Parent root = null;
+        addStage = new Stage();
+        addLoader.setController(AddController.getInstance());
+        try {
+            root = addLoader.load();
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+        addStage.setTitle(StringResources.getAddStageTitle());
+        addStage.setScene(new Scene(root, 700, 542));
+        AddController.getInstance().setStage(addStage);
     }
 
     //--Enter Events--------------------------------------------
@@ -115,19 +131,13 @@ public class Controller implements Initializable {
     //--Click Events--------------------------------------------
 
     public void addStage() {
-        FXMLLoader addLoader = new FXMLLoader(getClass().getResource("add.fxml"));
-        Parent root = null;
-        addStage = new Stage();
-        addLoader.setController(AddController.getInstance());
-        try {
-            root = addLoader.load();
-        } catch(IOException e) {
-            e.printStackTrace();
+        AddController add = AddController.getInstance();
+        if(add.getStage().isShowing()) {
+            add.getStage().requestFocus();
         }
-        addStage.setTitle(StringResources.getAddStageTitle());
-        addStage.setScene(new Scene(root, 700, 542));
-        AddController.getInstance().setStage(addStage);
-        addStage.show();
+        else {
+            add.getStage(Main.mainStage.getX()+30, Main.mainStage.getY()+30).show();
+        }
     }
 
     public void buttonClicked() {
