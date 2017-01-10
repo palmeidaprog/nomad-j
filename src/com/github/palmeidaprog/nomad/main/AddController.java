@@ -180,8 +180,8 @@ public class AddController implements Initializable {
     }
 
     // clean the add/edit window from previous information
-    private void cleanAddStage() {
-        profileTextF.setEffect(null);
+    public void cleanAddStage() {
+        profileTextF.setText(null);
         portableCheck.setSelected(false);
         portableCombo.setDisable(true);
         destDirLabel.setText(StringResources.getDestDirLabel());

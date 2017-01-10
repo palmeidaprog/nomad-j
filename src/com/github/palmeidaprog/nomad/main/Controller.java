@@ -137,6 +137,7 @@ public class Controller implements Initializable {
         }
         else {
             add.getStage(Main.mainStage.getX()+30, Main.mainStage.getY()+30).show();
+            add.cleanAddStage();
         }
     }
 
