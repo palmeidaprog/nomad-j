@@ -15,10 +15,13 @@
     -fx-background-radius: 10;*/
 }
 
+/*
 .button:hover {
-    -fx-background-color: gray;
+    -fx-background-color: white;
+    -fx-border-color: black;
     -fx-text-fill: "black";
 }
+*/
 
 .button:pressed {
   -fx-background-color: "gray";

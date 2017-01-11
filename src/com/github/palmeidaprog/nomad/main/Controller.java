@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -62,6 +63,7 @@ public class Controller implements Initializable {
         profileCol.setCellValueFactory(new PropertyValueFactory<>("profileName"));
         folderCol.setCellValueFactory(new PropertyValueFactory<>("containerFolderString"));
         profileTable.setItems(profileList);
+        profileTable.setPlaceholder(new Label("Sem perfis. Clique em adicionar à esquerda"));
 
         profileTable.requestFocus(); // todo: Find a way to stop TextField requesting focus
         initializeDialogStage();

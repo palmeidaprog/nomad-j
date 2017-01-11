@@ -12,15 +12,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.effect.BoxBlur;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
     public static Parent root;
     public static Stage mainStage;
-    private final double OPACITY = 0.85;
-    private final double BLUR_AMOUNT = 60;
-    private BoxBlur blur = new BoxBlur(BLUR_AMOUNT, BLUR_AMOUNT, 3);
+    public final int WIDTH = 750, HEIGHT = 600; // mainStage dimentsions
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -34,7 +33,13 @@ public class Main extends Application {
         }
         mainStage = primaryStage; // saves Stage as public
         mainStage.setTitle("Nomad");
-        mainStage.setScene(new Scene(root, 750 , 600));
+        mainStage.setScene(new Scene(root, WIDTH , HEIGHT));
+        /*try {*/
+            mainStage.getIcons().add(new Image(Main.class
+                    .getResourceAsStream("nomad-icon-64.png")));
+        /*} catch (IOException e) {
+            e.printStackTrace();
+        }*/
         mainStage.show();
         //root.setEffect(blur);
         Platform.setImplicitExit(false);

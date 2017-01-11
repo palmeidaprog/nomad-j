@@ -73,7 +73,7 @@ public class AddController implements Initializable {
         foldersTable.setPlaceholder(new Label(StringResources.getNoFolderAdded()));
     }
 
-    //---------------------------------------------------------------------
+    //--Mouse Clicked Events-----------------------------------------------------------
 
     // Choose Destination Folder Button Click Event
     public void chooseClicked() {//todo: clear all the add stage controls before closing the window
@@ -126,6 +126,17 @@ public class AddController implements Initializable {
             addStage.close();
         }
     }
+
+    //--Mouse Entered/Exit Events----------------------------------------------------
+
+    public void mouseEnterCreateProfile() {
+        UIEffects.getInstance().addShadow(createProfileBtn);
+    }
+
+    public void mouseExitCreateProfile() {
+        createProfileBtn.setEffect(null);
+    }
+
 
     //--Support methods-------------------------------------------------------------
 

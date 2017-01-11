@@ -31,6 +31,18 @@ public class DialogController {
         return instance;
     }
 
+    //--Mouse Entered/Exit Events----------------------------------------------------
+
+    public void mouseEnterOk() {
+        UIEffects.getInstance().addShadow(okButton);
+    }
+
+    public void mouseExitOk() {
+        okButton.setEffect(null);
+    }
+
+    //--Support methods-------------------------------------------------------------
+
     /*@param s Store Stage
     * @param w Stage's width
     * @param h Stage's height*/

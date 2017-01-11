@@ -92,7 +92,7 @@
             </VBox>
             <HBox alignment="CENTER" prefHeight="35.0" prefWidth="589.0">
                <children>
-                  <Button fx:id="createProfileBtn" mnemonicParsing="false" onMouseClicked="#clickCreateProfile" prefHeight="27.0" prefWidth="117.0" stylesheets="@../css_ui/button_dark.css" text="CRIAR PERFIL" />
+                  <Button fx:id="createProfileBtn" mnemonicParsing="false" onMouseClicked="#clickCreateProfile" onMouseEntered="#mouseEnterCreateProfile" onMouseExited="#mouseExitCreateProfile" prefHeight="27.0" prefWidth="117.0" stylesheets="@../css_ui/button_dark.css" text="CRIAR PERFIL" />
                </children>
             </HBox>
          </children>

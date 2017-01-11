@@ -2,6 +2,8 @@ package com.github.palmeidaprog.nomad.main;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.Timeline;
+import javafx.scene.control.Control;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
@@ -47,5 +49,12 @@ public class UIEffects {
             ft.setAutoReverse(true);
             ft.play();
         }
+    }
+
+    /*Add dropshadow effect to control*/
+    public void addShadow(Control c) {
+        DropShadow drop = new DropShadow();
+        drop.setOffsetY(2);
+        c.setEffect(drop);
     }
 }

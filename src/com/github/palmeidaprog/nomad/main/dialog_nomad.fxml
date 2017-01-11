@@ -51,7 +51,7 @@
             </HBox>
             <HBox alignment="BOTTOM_CENTER" prefHeight="72.0" prefWidth="475.0">
                <children>
-                  <Button fx:id="okButton" mnemonicParsing="false" onMouseClicked="#closeStage" prefHeight="27.0" prefWidth="117.0" stylesheets="@../css_ui/button_dark.css" text="CRIAR PERFIL" />
+                  <Button fx:id="okButton" mnemonicParsing="false" onMouseClicked="#closeStage" onMouseEntered="#mouseEnterOk" onMouseExited="#mouseExitOk" prefHeight="27.0" prefWidth="117.0" stylesheets="@../css_ui/button_dark.css" text="CRIAR PERFIL" />
                </children>
             </HBox>
          </children>
