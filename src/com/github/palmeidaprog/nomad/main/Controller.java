@@ -22,6 +22,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.effect.Effect;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -85,6 +86,8 @@ public class Controller implements Initializable {
         }
         dialogStage.setTitle("Dialog");
         dialogStage.setScene(new Scene(dialogRoot, WIDTH, HEIGHT));
+        dialogStage.getIcons().add(new Image(Main.class
+                .getResourceAsStream("comment_error_32.png")));
         DialogController.getInstance().setStage(dialogStage, WIDTH, HEIGHT);
     }
 
@@ -100,6 +103,8 @@ public class Controller implements Initializable {
         }
         addStage.setTitle(StringResources.getAddStageTitle());
         addStage.setScene(new Scene(root, 700, 542));
+        addStage.getIcons().add(new Image(Main.class
+                .getResourceAsStream("nomad-icon-64.png")));
         AddController.getInstance().setStage(addStage);
     }
 

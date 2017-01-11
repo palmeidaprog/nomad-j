@@ -34,12 +34,8 @@ public class Main extends Application {
         mainStage = primaryStage; // saves Stage as public
         mainStage.setTitle("Nomad");
         mainStage.setScene(new Scene(root, WIDTH , HEIGHT));
-        /*try {*/
-            mainStage.getIcons().add(new Image(Main.class
-                    .getResourceAsStream("nomad-icon-64.png")));
-        /*} catch (IOException e) {
-            e.printStackTrace();
-        }*/
+        mainStage.getIcons().add(new Image(Main.class
+                .getResourceAsStream("nomad-icon-64.png")));
         mainStage.show();
         //root.setEffect(blur);
         Platform.setImplicitExit(false);
