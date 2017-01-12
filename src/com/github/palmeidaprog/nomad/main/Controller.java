@@ -59,6 +59,8 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL u,ResourceBundle rb) {
+        profileList = Profile.readObjList();
+
         // profile's table
         activeCol.setCellValueFactory(new PropertyValueFactory<>("active"));
         profileCol.setCellValueFactory(new PropertyValueFactory<>("profileName"));
@@ -169,5 +171,6 @@ public class Controller implements Initializable {
 
     public void addProfile(Profile prof) {
         profileList.add(prof);
+        Profile.updateObjFile(profileList);
     }
 }

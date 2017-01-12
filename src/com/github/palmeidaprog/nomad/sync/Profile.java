@@ -8,15 +8,18 @@
 package com.github.palmeidaprog.nomad.sync;
 
 import com.github.palmeidaprog.nomad.main.Folders;
+import com.github.palmeidaprog.nomad.main.Settings;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.CheckBox;
 
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
 
-public class Profile {
+public class Profile implements Serializable {
     private String profileName; // profile name
     private CheckBox active; // profileTable control
+    private boolean activeSelection;
     private ObservableList<Folders> foldersList;
     private boolean mobileMode;
     private File containerFolder;
@@ -31,6 +34,17 @@ public class Profile {
         containerFolder = container;
         active = new CheckBox();
         active.setSelected(true);
+    }
+
+    // ReadObj serialized constructor
+    public Profile(Profile p) {
+        profileName = p.getProfileName();
+        active = new CheckBox();
+        active.setSelected(isActiveSelection());
+        foldersList = p.getFoldersList();
+        mobileMode = p.isMobileMode();
+        containerFolder = p.getContainerFolder();
+        mobile = p.getMobile();
     }
 
     public enum Mobile {
@@ -53,8 +67,8 @@ public class Profile {
     }
 
     // is profile active
-    public void isActive() {
-        active.isSelected();
+    public boolean isActive() {
+        return active.isSelected();
     }
 
     public ObservableList<Folders> getFoldersList() {
@@ -89,6 +103,10 @@ public class Profile {
         return mobileMode;
     }
 
+    public boolean isActiveSelection() {
+        return activeSelection;
+    }
+
     //--Data Model-----------------------------------------------------------
 
     public String getProfileName() {
@@ -107,4 +125,72 @@ public class Profile {
         return containerFolder.toString();
     }
 
+    //--Seriablize read and write-----------------------------------------------------------
+
+    // read from obj file and create a list
+    public static ObservableList<Profile> readObjList() {
+        ObservableList<Profile> list = FXCollections.observableArrayList();
+        File profilesFile = new File(Settings.getInstance().getConfigDir() +
+                "/profiles.ser");
+
+        if(!profilesFile.exists()) {
+            createObjFile();
+        }
+        else {
+            // readFile
+            try (ObjectInputStream objIS = new ObjectInputStream(new FileInputStream(profilesFile))) {
+
+
+                while (true) { // infinite loop
+                    Profile obj = new Profile((Profile) objIS.readObject());
+                    list.add(obj);
+                }
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        return list;
+    }
+
+    public static void updateObjFile(ObservableList<Profile> list) {
+        File profilesFile = new File(Settings.getInstance().getConfigDir() +
+                "/profiles.ser");
+
+        // create file if it doesn't exist
+        if(!profilesFile.exists()) {
+            createObjFile();
+        }
+
+        try(ObjectOutputStream objOS = new ObjectOutputStream(new FileOutputStream(profilesFile))) {
+            for(Profile p : list) {
+                objOS.writeObject(p);
+            }
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // creates profiles.ser
+    private static void createObjFile() {
+        try { // todo: dialog error "couldn't create file/dir"
+            if(!Settings.getInstance().getConfigDir().mkdirs()) {
+                throw new IOException("Couldn't create the directory");
+            }
+            if(!new File(Settings.getInstance().getConfigDir() + "/profiles.ser").createNewFile()) {
+                throw new IOException("Couldn't create the file");
+            }
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public String toString() {
+        activeSelection = isActive();
+        return "profileName=" + profileName + "; activeSelection=" + isActive() +
+                "; foldersList=" + foldersList +
+                "; mobileMode=" + mobileMode +
+                "; containerFolder=" + containerFolder +
+                "; mobile=" + mobile;
+    }
 }
