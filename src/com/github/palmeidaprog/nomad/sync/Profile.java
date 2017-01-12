@@ -22,7 +22,6 @@ public class Profile {
     private File containerFolder;
     private Mobile mobile = Mobile.USB;
 
-
     /*@param name Profile name
     * @param fList List containing folders to sync
     * @param container Container's Folders */

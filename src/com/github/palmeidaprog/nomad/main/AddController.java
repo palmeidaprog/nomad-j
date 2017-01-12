@@ -35,7 +35,6 @@ public class AddController implements Initializable {
     @FXML private TableColumn<Folders, CheckBox> contentCol;
     private ObservableList<Folders> foldersList = FXCollections.observableArrayList();
 
-
     // FXML Controls
     @FXML private Button createProfileBtn;
     @FXML private TextField profileTextF;
@@ -43,7 +42,6 @@ public class AddController implements Initializable {
     @FXML private CheckBox portableCheck;
     @FXML private ComboBox<String> portableCombo;
     private ObservableList<String> portableComboList; // get from StringResource class
-
 
     //--Singleton design--------------------------------------------------
     private volatile static AddController instance = null;
@@ -76,9 +74,11 @@ public class AddController implements Initializable {
     //--Mouse Clicked Events-----------------------------------------------------------
 
     // Choose Destination Folder Button Click Event
-    public void chooseClicked() {//todo: clear all the add stage controls before closing the window
+    public void chooseClicked() {
         destFolder = chooser(StringResources.getDirChooserTitle(), 0);
-        destDirLabel.setText(destFolder.toString());
+        if(destFolder != null) { // to avoid NullPointerException
+            destDirLabel.setText(destFolder.toString());
+        }
     }
 
     // select/unselect portable mode checkbox event

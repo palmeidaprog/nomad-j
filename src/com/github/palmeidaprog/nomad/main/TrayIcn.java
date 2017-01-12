@@ -48,8 +48,6 @@ public class TrayIcn {
     // creates SystemTrayIcon
     public void createSystemTrayIcon() {
         getDefaultToolkit();
-        System.out.println("passed"); // @debug
-
 
         if (!SystemTray.isSupported()) {
             System.out.println("SystemTray is not supported");
