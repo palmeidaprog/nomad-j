@@ -11,6 +11,8 @@ import com.github.palmeidaprog.nomad.main.Folders;
 import com.github.palmeidaprog.nomad.main.Settings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.CheckBox;
 
 import java.io.*;
@@ -20,7 +22,7 @@ public class Profile implements Serializable {
     private String profileName; // profile name
     private transient CheckBox active; // profileTable control
     private boolean activeSelection;
-    private ObservableList<Folders> foldersList;
+    private transient ObservableList<Folders> foldersList;
     private boolean mobileMode;
     private File containerFolder;
     private Mobile mobile = Mobile.USB;
@@ -33,6 +35,7 @@ public class Profile implements Serializable {
         foldersList = fList;
         containerFolder = container;
         active = new CheckBox();
+        checkBoxSelectEvent();
         active.setSelected(true);
     }
 
@@ -40,11 +43,12 @@ public class Profile implements Serializable {
     public Profile(Profile p) {
         profileName = p.getProfileName();
         active = new CheckBox();
-        active.setSelected(isActiveSelection());
+        active.setSelected(p.isActiveSelection());
         foldersList = p.getFoldersList();
         mobileMode = p.isMobileMode();
         containerFolder = p.getContainerFolder();
         mobile = p.getMobile();
+        checkBoxSelectEvent();
     }
 
     public enum Mobile {
@@ -125,9 +129,27 @@ public class Profile implements Serializable {
         return containerFolder.toString();
     }
 
+    private void checkBoxSelectEvent() {
+        active.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                if(active.isSelected()) {
+                    activeSelection = true;
+                    System.out.println("Selected"); // @debug
+                }
+                else {
+                    activeSelection = false;
+                    System.out.println("deSelected"); // @debug
+                }
+            }
+        });
+    }
+
     //--Seriablize read and write-----------------------------------------------------------
 
-    // read from obj file and create a list
+    /*read from obj file and create a list
+    * @return List with the objects read from the file*/
     public static ObservableList<Profile> readObjList() {
         ObservableList<Profile> list = FXCollections.observableArrayList();
         File profilesFile = new File(Settings.getInstance().getConfigDir() +
@@ -145,13 +167,16 @@ public class Profile implements Serializable {
                     Profile obj = new Profile((Profile) objIS.readObject());
                     list.add(obj);
                 }
-            } catch (IOException | ClassNotFoundException e) {
+            } catch(EOFException e) {
+                // do nothing (standard loop exit)
+            } catch(IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
         }
         return list;
     }
 
+    /*@param list List of objs to be written*/
     public static void updateObjFile(ObservableList<Profile> list) {
         File profilesFile = new File(Settings.getInstance().getConfigDir() +
                 "/profiles.ser");
@@ -180,13 +205,12 @@ public class Profile implements Serializable {
                 throw new IOException("Couldn't create the file");
             }
         } catch(IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 
     @Override
     public String toString() {
-        activeSelection = isActive();
         return "profileName=" + profileName + "; activeSelection=" + activeSelection +
                 "; mobileMode=" + mobileMode +
                 "; containerFolder=" + containerFolder +

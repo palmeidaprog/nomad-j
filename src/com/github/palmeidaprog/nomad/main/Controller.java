@@ -10,6 +10,7 @@ package com.github.palmeidaprog.nomad.main;
 import com.github.palmeidaprog.nomad.sync.Profile;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -25,6 +26,7 @@ import javafx.scene.effect.Effect;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
@@ -71,6 +73,15 @@ public class Controller implements Initializable {
         profileTable.requestFocus(); // todo: Find a way to stop TextField requesting focus
         initializeDialogStage();
         initializeAddStage();
+
+        /*// Close Main Window Event
+        Main.mainStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+
+            @Override
+            public void handle(WindowEvent event) {
+                //Profile.updateObjFile(profileList);
+            }
+        });*/
     }
 
     private void initializeDialogStage() {
@@ -126,7 +137,7 @@ public class Controller implements Initializable {
         UIEffects.getInstance().fadeAnim(deleteImage, 1);
     }
 
-    //--Exit Events--------------------------------------------
+    //--Mouse Exit Events--------------------------------------------
 
     public void mouseExitAdd() {
         UIEffects.getInstance().fadeAnim(addImage, 0);
@@ -161,6 +172,9 @@ public class Controller implements Initializable {
         //DoubleProperty sD = new SimpleDoubleProperty(H);
 
     }
+
+    //--Extra events----------------------------------------------------------------
+
 
     //--Support methods-------------------------------------------------------------
 
