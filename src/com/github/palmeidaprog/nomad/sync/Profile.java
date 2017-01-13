@@ -186,11 +186,10 @@ public class Profile implements Serializable {
 
     @Override
     public String toString() {
-        activeSelection = isActive();
         return "profileName=" + profileName + "; activeSelection=" + isActive() +
-                "; foldersList=" + foldersList +
                 "; mobileMode=" + mobileMode +
                 "; containerFolder=" + containerFolder +
                 "; mobile=" + mobile;
     }
 }
+//"; foldersList=" + foldersList +
