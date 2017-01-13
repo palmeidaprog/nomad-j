@@ -10,6 +10,7 @@
         <element id="file-copy" path="$PROJECT_DIR$/src/com/github/palmeidaprog/nomad/resources/images/ok128.gif" />
         <element id="file-copy" path="$PROJECT_DIR$/src/com/github/palmeidaprog/nomad/resources/images/nomad-icon-64.png" />
         <element id="file-copy" path="$PROJECT_DIR$/src/com/github/palmeidaprog/nomad/resources/images/comment_error_32.png" />
+        <element id="file-copy" path="$PROJECT_DIR$/src/com/github/palmeidaprog/nomad/resources/images/nomad-icon-128.png" />
       </element>
     </root>
   </artifact>

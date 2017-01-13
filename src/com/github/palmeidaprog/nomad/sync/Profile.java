@@ -43,6 +43,7 @@ public class Profile implements Serializable {
     public Profile(Profile p) {
         profileName = p.getProfileName();
         active = new CheckBox();
+        activeSelection = p.isActiveSelection();
         active.setSelected(p.isActiveSelection());
         foldersList = p.getFoldersList();
         mobileMode = p.isMobileMode();

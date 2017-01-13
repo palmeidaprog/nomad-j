@@ -45,6 +45,7 @@ public class Controller implements Initializable {
     private static final Duration SLIDE_DURATION = Duration.seconds(0.4);
 
     // Window Stage Obj
+    private Stage mainStage;
     private Stage addStage;
 
     //--Singleton design----------------------------------
@@ -74,14 +75,9 @@ public class Controller implements Initializable {
         initializeDialogStage();
         initializeAddStage();
 
-        /*// Close Main Window Event
-        Main.mainStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+        //Close Main Window Event
+        mainStage = Main.mainStage;
 
-            @Override
-            public void handle(WindowEvent event) {
-                //Profile.updateObjFile(profileList);
-            }
-        });*/
     }
 
     private void initializeDialogStage() {
@@ -119,6 +115,10 @@ public class Controller implements Initializable {
         addStage.getIcons().add(new Image(Main.class
                 .getResourceAsStream("nomad-icon-64.png")));
         AddController.getInstance().setStage(addStage);
+    }
+
+    public void updpateObjOnClose() {
+        Profile.updateObjFile(profileList);
     }
 
     //--Enter Events--------------------------------------------
