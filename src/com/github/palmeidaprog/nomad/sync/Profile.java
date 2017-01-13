@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class Profile implements Serializable {
     private String profileName; // profile name
-    private CheckBox active; // profileTable control
+    private transient CheckBox active; // profileTable control
     private boolean activeSelection;
     private ObservableList<Folders> foldersList;
     private boolean mobileMode;
