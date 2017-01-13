@@ -148,7 +148,7 @@ public class Controller implements Initializable {
             add.getStage().requestFocus();
         }
         else {
-            add.getStage(Main.mainStage.getX()+30, Main.mainStage.getY()+30).show();
+            add.getStage(Main.mainStage.getX()+30, Main.mainStage.getY()+30).showAndWait();
             add.cleanAddStage();
         }
     }

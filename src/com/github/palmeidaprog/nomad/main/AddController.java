@@ -66,6 +66,7 @@ public class AddController implements Initializable {
         // combo box
         portableComboList = StringResources.getPortableComboList();
         portableCombo.setItems(portableComboList);
+        portableCombo.getSelectionModel().select(0);
 
         // changing folderTable empty placeholder message
         foldersTable.setPlaceholder(new Label(StringResources.getNoFolderAdded()));

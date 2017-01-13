@@ -186,7 +186,8 @@ public class Profile implements Serializable {
 
     @Override
     public String toString() {
-        return "profileName=" + profileName + "; activeSelection=" + isActive() +
+        activeSelection = isActive();
+        return "profileName=" + profileName + "; activeSelection=" + activeSelection +
                 "; mobileMode=" + mobileMode +
                 "; containerFolder=" + containerFolder +
                 "; mobile=" + mobile;
